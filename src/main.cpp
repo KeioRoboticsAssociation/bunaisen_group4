@@ -12,7 +12,7 @@ PwmOut motorL(PA_0);
 PwmOut motorR(PA_1);
 DigitalOut motorL_dir(PA_4); // 左モーター方向ピン1
 DigitalOut motorR_dir(PB_0); // 右モーター方向ピン1
-// --- ここまで追加 ---
+
 
 char buf[2];
 char str[64];

@@ -6,7 +6,7 @@
 static UnbufferedSerial esp(PA_9, PA_10);
 DigitalOut led(LED1);
 
-// --- ここから追加 ---
+
 // モータードライバのPWM出力ピンを指定 (ご自身の環境に合わせて変更してください)
 PwmOut motorL(PA_0); 
 PwmOut motorR(PA_1);

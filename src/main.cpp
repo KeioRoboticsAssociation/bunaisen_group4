@@ -13,6 +13,11 @@ PwmOut motorR(PA_1);
 DigitalOut motorL_dir(PA_4); // 左モーター方向ピン1
 DigitalOut motorR_dir(PB_0); // 右モーター方向ピン1
 
+// --- ここから追加 ---
+// 常時回転させるモーターのピンを指定
+PwmOut continuousMotor(PA_5); // ご自身の環境に合わせてピンを変更してください
+// --- ここまで追加 ---
+
 
 char buf[2];
 char str[64];
@@ -72,9 +77,16 @@ void init()
 int main(void)
 {
     init();
+
+    // --- ここから追加 ---
+    // 常時回転モーターのPWM周期とデューティ比（速度）を設定
+    // デューティ比は0.0 (停止) から 1.0 (最大速度) の間で指定
+    continuousMotor.period_ms(20);  // PWM周期を20msに設定
+    continuousMotor.write(0.5f);    // 50%の速度で回転
+    // --- ここまで追加 ---
+
     while (1) //コメントはdualshock4の場合
     {
-        // --- ここから追加 ---
         // 左スティックのY軸で前後の速度、X軸で旋回速度を決定
         float forward = joy.lstick[1]; // Y軸の値を取得 (-1.0 ~ 1.0)
         float turn = joy.lstick[0];    // X軸の値を取得 (-1.0 ~ 1.0)
@@ -107,8 +119,6 @@ int main(void)
         }
         
        
-
-        // --- ここまで追加 ---
       
         printf("%5.2f %5.2f %5.2f %5.2f %d %d %d %d %d %d %d %d %d\n",
                joy.rstick[0],  // 左スティックX(左-1.0~1.0右)
@@ -129,4 +139,3 @@ int main(void)
     }
     return 0;
 }
-

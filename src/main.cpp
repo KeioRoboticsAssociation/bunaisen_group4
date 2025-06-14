@@ -8,14 +8,14 @@ DigitalOut led(LED1);
 
 
 // モータードライバのPWM出力ピンを指定 (ご自身の環境に合わせて変更してください)
-PwmOut motorL(PA_0); 
-PwmOut motorR(PA_1);
-DigitalOut motorL_dir(PA_4); // 左モーター方向ピン1
-DigitalOut motorR_dir(PB_0); // 右モーター方向ピン1
+PwmOut motorL(PA_15); 
+PwmOut motorR(PB_7);
+DigitalOut motorL_dir(PA_13); // 左モーター方向ピン1
+DigitalOut motorR_dir(PC_14); // 右モーター方向ピン1
 
 // --- ここから追加 ---
 // 常時回転させるモーターのピンを指定
-PwmOut continuousMotor(PA_5); // ご自身の環境に合わせてピンを変更してください
+// PwmOut continuousMotor(PA_5); // ご自身の環境に合わせてピンを変更してください
 // --- ここまで追加 ---
 
 
@@ -81,8 +81,8 @@ int main(void)
     // --- ここから追加 ---
     // 常時回転モーターのPWM周期とデューティ比（速度）を設定
     // デューティ比は0.0 (停止) から 1.0 (最大速度) の間で指定
-    continuousMotor.period_ms(20);  // PWM周期を20msに設定
-    continuousMotor.write(0.5f);    // 50%の速度で回転
+    // continuousMotor.period_ms(20);  // PWM周期を20msに設定
+    // continuousMotor.write(0.5f);    // 50%の速度で回転
     // --- ここまで追加 ---
 
     while (1) //コメントはdualshock4の場合

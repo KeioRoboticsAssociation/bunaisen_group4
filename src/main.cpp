@@ -81,19 +81,19 @@ int main(void)
     float speedfactor = 0.5f; // スピードファクターの初期値
     int dpad = 0; // 十字キーの状態を保持する変数
     int button = 0; // ボタンの状態を保持する変数
-    int continuousMotor_ = 1; // 常時回転モーターの速度を保持する変数
+    int continuousMotor_ = 1; 
     // --- ここから追加 ---
     // 常時回転モーターのPWM周期とデューティ比（速度）を設定
     // デューティ比は0.0 (停止) から 1.0 (最大速度) の間で指定
-    continuousMotor.period_us(100);  // PWM周期を20msに設定
-    continuousMotor.write(0.2f);    // 50%の速度で回転
-    continuousMotor_dir.write(continuousMotor_); // 常時回転モーターの方向を初期化 (1: 正転, 0: 逆転)
+    continuousMotor.period_us(100);  // PWM周期を100usに設定
+    continuousMotor.write(0.2f);    
+    continuousMotor_dir.write(continuousMotor_); 
     // --- ここまで追加 ---
 
-    motorL.period_us(100); // PWM周期を20msに設定
-    motorR.period_us(100); // PWM周期を20msに設定
+    motorL.period_us(100); // PWM周期を100usに設定
+    motorR.period_us(100); // PWM周期を100usに設定
     motorL_dir.write(0); // 左モーターの方向を初期化
-    motorR_dir.write(0); // 右モーターの方向を初期
+    motorR_dir.write(0); // 右モーターの方向を初期化
     motorL.write(0.0f); // 左モーターのデューティ比を初期化
     motorR.write(0.0f); // 右モーターのデューティ比を初期化
 
